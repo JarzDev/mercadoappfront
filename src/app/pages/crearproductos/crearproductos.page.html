@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{operacion}} Productos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/outro">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+  <ion-col   size-lg="4" size-md="6"  size-sm="12" size="12"> 
+    
+  <form [formGroup]="form" (ngSubmit)="createProduct()" >
+    <ion-item>
+      <ion-input label="Producto"  formControlName="producto" placeholder="Nombre del Producto"></ion-input>
+    </ion-item>
+  
+  
+    <ion-item>
+      <ion-input type="number" label="Precio"  formControlName="precio" placeholder="Valor del Producto"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" label="Cantidad"  formControlName="cantidad" placeholder="Cantidad"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="datetime-local" label="Fecha y Hora del Servicio" formControlName="fecha" ></ion-input>
+    </ion-item>
+  
+    <ion-button type="submit" expand="block">{{operacion}} Producto</ion-button> 
+  </form>
+</ion-col>
+</ion-row>
+</ion-grid>
+
+ 
+</ion-content>

@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>productos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/outro">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+ 
+    <ion-button  routerLink="/crearproductos/0" color="success" expand="block"> <ion-icon name="add"> Agregar</ion-icon></ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
+
+  
+
+  <ion-content class="ion-padding" mode="ios" >
+    <ion-grid>
+  <ion-row>
+  
+    
+    <ion-col  *ngFor=" let item of productos"  size-lg="4" size-md="6"  size-sm="12" size="12"> 
+     
+
+
+     
+        <div *ngIf="!item" class="loader">
+          <ion-spinner name="crescent"></ion-spinner>
+        </div>
+
+      
+      <ion-card>
+        
+   <ion-grid>
+  
+    <ion-row>
+      <ion-col size-lg="4" size-md="4"  size-sm="4" size="12">
+        <ion-avatar>
+          <img  src="assets/img/logo.png"  class="scale-up-center">
+        </ion-avatar>
+                </ion-col>
+      <ion-col size-lg="4" size-md="4"  size-sm="4" size="12">
+    </ion-col>
+      <ion-col size-lg="8" size-md="8"  size-sm="8" size="12">
+        <div>
+         <h3> {{item.producto}} </h3>
+          <p> Precio: <br> <strong> {{item.precio | currency}} </strong></p>
+          <p> cantidad: <br> <strong> {{item.cantidad}} </strong></p>
+          <p> Total: <br> <strong>  {{ item.precio * item.cantidad | currency}} </strong></p>
+        </div>
+<div >
+  <ion-button  (click)="listoBtn()"  class="buttons" color="success" expand="block">Listo</ion-button>
+<div *ngIf="!listo  && item.id">
+  <ion-button  class="buttons" color="primary" routerLink="/crearproductos/{{item.id}}" expand="block">Cambiar</ion-button>
+  <ion-button  (click)="deleteProduct(item.id)"  class="buttons"  color="danger" expand="block">Eliminar</ion-button>
+</div>
+  
+</div>
+
+      </ion-col>
+      
+      </ion-row>
+      
+        
+      </ion-grid>
+    
+    
+ 
+    </ion-card>
+  </ion-col>
+  
+  </ion-row>
+  </ion-grid>
+<div>
+  <h1  class="ion-text-center title"><strong> Valor total: </strong> {{total|currency}}</h1>
+</div>
+  </ion-content>
+
